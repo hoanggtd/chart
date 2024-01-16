@@ -31,7 +31,7 @@ spec:
                   key: mysql_password
           ports:
             - containerPort: {{ .Values.port }}
-              name: {{ .Release.Name }}-container
+              name: {{ .Release.Name }}
 ---
 apiVersion: v1
 kind: Service
