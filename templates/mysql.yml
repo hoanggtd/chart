@@ -7,10 +7,24 @@ metadata:
 type: Opaque
 ---
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ .Release.Name }}-mysql-pv
+  labels: {{ include "common.labels.svc" . | nindent 6 }}
+spec:
+  storageClassName: premium-ssd1
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/data"
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   labels: {{ include "common.labels.svc" . | nindent 6 }}
-  name:  {{ .Release.Name }}-mysql-pvc
+  name: {{ .Release.Name }}-mysql-pvc
 spec:
   accessModes:
   - ReadWriteOnce
