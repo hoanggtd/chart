@@ -1,4 +1,4 @@
-replicas: 3
+replicas: 6
 port: 80
 portmysql: 3306
 dommain: hoangbaoochii.id
